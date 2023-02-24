@@ -1,4 +1,4 @@
-
+[Linxu's Blog](https://linxu.hi-motor.site)
 
 > 该主题根据Hugo PaperMod主题修改而来: https://github.com/adityatelange/hugo-PaperMod
 
