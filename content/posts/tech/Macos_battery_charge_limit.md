@@ -34,7 +34,7 @@ cover:
 
 ***设备 MacOS Big Sur 11.7.4,Macbook pro 2019(intel)***
 
-### 常见解法
+## 常见解法
 #### smcFanControl
 为了限制 Macos充电上限，中文互联网上常见的方法往往是借助于开源工具 **[smcFanControl](https://github.com/hholtmann/smcFanControl)** ,举例[CSDN_macbook设置充电上限](https://blog.csdn.net/happyyouli/article/details/115805747)
 
@@ -52,7 +52,7 @@ cover:
 #### AlDente
 要收钱，而且更加臃肿，直接pass。
 
-### 次优解
+## 次优解
 基于 smcFanControl，我们可以简单写一个 shell 脚本，并设置为开机自启，实现自动化。
 
 为了免去每次运行都要输密码，我们可以用管道实现自动输入密码 
@@ -74,6 +74,7 @@ echo $(cat $work_path/password.txt) |sudo -S ~/smcFanControl/smc-command/smc -k 
 exit
 ```
 
+## 优化 
 然而正如 smcFanControl 仓库 readme 首段所说，它是一个风扇控制工具，而不是电量控制工具。
 
 〉 smcFanControl lets the user set a minimum speed for built-in fans. It allows you to increase your minimum fan speed to make your Intel Mac run cooler. In order to not damage your machine, smcFanControl does not let you set a minimum speed to a value below Apple's defaults.
@@ -81,10 +82,18 @@ exit
 1.png
 尽管 smcFanControl 也只有 2.9 MB，但也留下了碍眼的风扇控制（我才不愿意被创造需求呢doge），很难看。
 
-### 优化 
+2.png
 何不如直接把用到的可执行文件 smc 拎出来？
 
 于是看着不顺眼的 smcFanControl 也可以删掉了。
 `% brew uninstall smcfancontrol`
+
+```shell
+#!/bin/sh
+work_path=$(dirname $0)
+echo $work_path
+echo $(cat $work_path/password.txt) |sudo -S $work_path/smc -k BCLM -w 50
+exit
+```
 
 [代码戳我](https://github.com/DawnEver/MacScrips/tree/main/BatteryLimit)
