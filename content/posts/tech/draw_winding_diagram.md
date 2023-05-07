@@ -42,7 +42,7 @@ cover:
 ## 前情提要
 在商业电机设计软件中，绕组分析模块绕组链接图效果是这样的。
 
-<img src='./maxwellWinding.png'，width=200>
+<img src=‘./draw_winding_diagram/maxwellWinding.png'，width=200>
 
 笔者此前的绕组绘制模块主要参考了 [陈嘉豪](https://github.com/horychen) 在 [ACMOP](https://github.com/horychen/ACMOP) 中的绕组分析部分。
 
@@ -54,7 +54,7 @@ ACMOP（Alternating Current Machine Optimization Project），是一个比较完
 
 2.ACMOP 在一些细节上存在问题，如绘制单层绕组（下图）。
 
-<img src='./ErrorDiagram.png'，width=200>
+<img src=‘./draw_winding_diagram/ErrorDiagram.png'，width=200>
 
 3.作为一个有追求的 Coder，笔者觉得 ACMOP 这一部分的代码逻辑走了一些弯路。陷入很多不必要的分类讨论和判断。尤其是画布边缘的端部绕组连接，这一部分在下面介绍笔者的思路时候会详细阐述。
 
@@ -114,7 +114,7 @@ class winding(object):
 考虑到单匝线圈感应出的电动势明显小于多匝线圈，且实际应用中多匝线圈的电机使用更多，~~为了省事~~，笔者在程序中虽然考虑了线圈匝数但是，基本上按照多匝线圈的画法去绘制。
 
 
-<img src='./单匝线圈.png'>
+<img src=‘./draw_winding_diagram/单匝线圈.png'>
 
 ```python
 def drawVerticalLine(self,x,phase,layer):
@@ -217,7 +217,7 @@ def draw(self):
         plt.axis ('off') 
         plt.xlim(-0.5,self.Z-0.5)
         plt.show()
-        plt.savefig('./WindingDiagram.png',bbox_inches='tight')
+        plt.savefig(‘./draw_winding_diagram/WindingDiagram.png',bbox_inches='tight')
 ```
 1.实际中，绕组是循环绕制在圆柱形的电机中。于是就像一个行列式，当绕组线圈向右超出画布，自动在画布左侧延伸出来。
 
@@ -264,15 +264,15 @@ if __name__=="__main__":
 
 36槽4极单层绕组
 
-<img src='./s36p4n1.png'，width=200>
+<img src=‘./draw_winding_diagram/s36p4n1.png'，width=200>
 
 36槽4极整距双层绕组
 
-<img src='./s36p4n2y9.png'，width=200>
+<img src=‘./draw_winding_diagram/s36p4n2y9.png'，width=200>
 
 36槽4极短距（节距为7）双层绕组（只绘制A相）
 
-<img src='./s36p4n2y7.png'，width=200>
+<img src=‘./draw_winding_diagram/s36p4n2y7.png'，width=200>
 
 ---
 线圈间连接和串并联支路等内容
