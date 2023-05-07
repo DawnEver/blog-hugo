@@ -42,7 +42,7 @@ cover:
 ## 前情提要
 笔者此前的绕组绘制模块主要参考了 [陈嘉豪](https://github.com/horychen) 在 [ACMOP](https://github.com/horychen/ACMOP) 中的绕组分析部分。
 
-ACMOP（Alternating Current Machine Optimization Project），是一个比较完善的电机设计优化项目。在绕组模块，陈主要使用了 python 的 pycairo 库，提供了包括星型图、绕组链接图等等全流程的绕组分析。
+ACMOP（Alternating Current Machine Optimization Project），是一个比较完善的电机设计优化项目。在绕组模块，陈主要使用了 python 的 pycairo 库，提供了包括槽电势星型图、绕组链接图等等全流程的绕组分析。
 
 总体评价，陈是笔者暂时无法企及的大佬。但是，针对笔者需求，陈的模块存在一些问题。
 
