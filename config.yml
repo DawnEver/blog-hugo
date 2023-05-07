@@ -30,54 +30,6 @@ defaultContentLanguage: en # 最顶部首先展示的语言页面
 defaultContentLanguageInSubdir: true
 
 languages:
-  en:
-    languageName: "English"
-    weight: 1
-    profileMode:
-      enabled: true
-      title: ʕ•ﻌ•ʔ
-      subtitle:
-      imageUrl: "img/avatar.png"
-      imageTitle:
-      imageWidth: 150
-      imageHeight: 150
-      buttons:
-        - name: Tech
-          url: posts/tech
-        - name: Read
-          url: posts/read
-        - name: Life
-          url: posts/life
-    menu:
-      main:
-        - identifier: search
-          name: 🔍 Search
-          url: search
-          weight: 1
-        - identifier: home
-          name: Home
-          url: /
-          weight: 2
-        - identifier: posts
-          name: Posts
-          url: posts
-          weight: 3
-        - identifier: tags
-          name: Tags
-          url: tags
-          weight: 15
-        - identifier: archives
-          name: Archives
-          url: archives/
-          weight: 20
-        - identifier: about
-          name: About
-          url: about
-          weight: 50
-        - identifier: links
-          name: Links
-          url: links
-          weight: 60
   ch:
     languageName: "Chinese"
     weight: 1
@@ -127,6 +79,55 @@ languages:
           name: 🤝 友链
           url: links
           weight: 60
+  en:
+    languageName: "English"
+    weight: 1
+    profileMode:
+      enabled: true
+      title: ʕ•ﻌ•ʔ
+      subtitle:
+      imageUrl: "img/avatar.png"
+      imageTitle:
+      imageWidth: 150
+      imageHeight: 150
+      buttons:
+        - name: Tech
+          url: posts/tech
+        - name: Read
+          url: posts/read
+        - name: Life
+          url: posts/life
+    menu:
+      main:
+        - identifier: search
+          name: 🔍 Search
+          url: search
+          weight: 1
+        - identifier: home
+          name: Home
+          url: /
+          weight: 2
+        - identifier: posts
+          name: Posts
+          url: posts
+          weight: 3
+        - identifier: tags
+          name: Tags
+          url: tags
+          weight: 15
+        - identifier: archives
+          name: Archives
+          url: archives/
+          weight: 20
+        - identifier: about
+          name: About
+          url: about
+          weight: 50
+        - identifier: links
+          name: Links
+          url: links
+          weight: 60
+  
 
 outputs:
   home:

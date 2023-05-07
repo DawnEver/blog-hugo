@@ -86,15 +86,13 @@ ACMOP（Alternating Current Machine Optimization Project），是一个比较完
 ```python
 class winding(object):
     def __init__(self,Z,tou,y1,n,a,N):
-        self.Z,self.tou,self.y1,self.n,self.a=Z,tou,y1,n,a
+        self.Z,self.tou,self.y1,self.n,self.a,self.drawAllPhase=Z,tou,y1,n,a,drawAllPhase
 
         self.multiTurn=0
         if N>1:
             self.multiTurn=1    # 多匝绕组
-        self.onePhase=1 # 1-只画A相
 
         self.colorMap=["r","g","b",]# A-r B-b C-g
-    
         self.layerBias=0.1  # 两层绕组的偏移=2*self.layerBias
         self.terminalBias=0.1 # 端部引出线的偏移
         
@@ -174,8 +172,9 @@ def draw(self):
                     self.drawVerticalLine(x=x2,phase=phase,layer=0)
                     text=plt.text(x2,hText2,f"{int(x2+1)}",horizontalalignment = 'center', bbox=dict(fc='white',lw=0,alpha=0.9))
 
-                    self.drawFoldingLineUpper(x1,x2,phase,layer=0)
-                    self.drawFoldingLineLower(x1,x2,phase,layer=0)
+                    if self.drawAllPhase or self.drawAllPhase+phase==0:
+                        self.drawFoldingLineUpper(x1,x2,phase,layer=0)
+                        self.drawFoldingLineLower(x1,x2,phase,layer=0)
 
                     if x2>=self.Z:
                         x1-=self.Z
@@ -186,8 +185,9 @@ def draw(self):
                         self.drawVerticalLine(x=x2,phase=phase,layer=0)
                         plt.text(x2,hText2,f"{int(x2+1)}",horizontalalignment = 'center', bbox=dict(fc='white',lw=0,alpha=0.9))
                 
-                        self.drawFoldingLineUpper(x1,x2,phase,layer=0)
-                        self.drawFoldingLineLower(x1,x2,phase,layer=0)
+                        if self.drawAllPhase or self.drawAllPhase+phase==0:
+                            self.drawFoldingLineUpper(x1,x2,phase,layer=0)
+                            self.drawFoldingLineLower(x1,x2,phase,layer=0)
                 
             elif self.n == 2:
                 phase=int(i/spppp)%3    # 计算
@@ -199,16 +199,17 @@ def draw(self):
                 x2=i+self.y1+self.layerBias
                 self.drawVerticalLine(x=x2,phase=phase,layer=1)
 
-                self.drawFoldingLineUpper(x1,x2,phase,layer=1)
-                self.drawFoldingLineLower(x1,x2,phase,layer=1)
+                if self.drawAllPhase or self.drawAllPhase+phase==0:
+                    self.drawFoldingLineUpper(x1,x2,phase,layer=1)
+                    self.drawFoldingLineLower(x1,x2,phase,layer=1)
                 if x2>=self.Z:
                     x1-=self.Z
                     x2-=self.Z
                     
                     self.drawVerticalLine(x=x2,phase=phase,layer=1)
-
-                    self.drawFoldingLineUpper(x1,x2,phase,layer=1)
-                    self.drawFoldingLineLower(x1,x2,phase,layer=1)
+                    if self.drawAllPhase or self.drawAllPhase+phase==0:
+                        self.drawFoldingLineUpper(x1,x2,phase,layer=1)
+                        self.drawFoldingLineLower(x1,x2,phase,layer=1)
             else:
                 print("不支持更多绕组层数")
                 break
@@ -234,18 +235,19 @@ def draw(self):
 
 ```python
 if __name__=="__main__":
-    Z=36
+    Z=54
     p=4
     tou=Z/p
-    y1=9
+    y1=7
     n=1
     a=1
     N=2
-    if 1:
-        w=winding(Z,tou,y1,n,a,N)
+    drawAllPhase=0
+    if 0:
+        w=winding(Z,tou,y1,n,a,N,drawAllPhase)
     else:
         n=2
-        w=winding(Z,tou,y1,n,a,N)
+        w=winding(Z,tou,y1,n,a,N,drawAllPhase)
     w.draw()
 ```
 
@@ -257,6 +259,20 @@ if __name__=="__main__":
 大型项目中文件可能并不在项目工作路径下，直接执行文件造成一些路径错误。`if __name__ ...`中完全可以独立制造出一些测试案例。
 
 搭配doctest等测试工具可能更棒。
+
+### 闪亮登场
+
+36槽4极单层绕组
+
+<img src='./draw_winding_diagram/s36p4n1.png'，width=200>
+
+36槽4极整距双层绕组
+
+<img src='./draw_winding_diagram/s36p4n2y9.png'，width=200>
+
+36槽4极短距（节距为7）双层绕组（只绘制A相）
+
+<img src='./draw_winding_diagram/s36p4n2y7.png'，width=200>
 
 ---
 线圈间连接和串并联支路等内容
