@@ -40,6 +40,10 @@ cover:
 不知不觉间，创意的火花被点燃，“重构这个模块”的想法出现在我脑海里。
 
 ## 前情提要
+在商业电机设计软件中，绕组分析模块绕组链接图效果是这样的。
+
+<img src='./draw_winding_diagram/maxwellWinding.png'，width=200>
+
 笔者此前的绕组绘制模块主要参考了 [陈嘉豪](https://github.com/horychen) 在 [ACMOP](https://github.com/horychen/ACMOP) 中的绕组分析部分。
 
 ACMOP（Alternating Current Machine Optimization Project），是一个比较完善的电机设计优化项目。在绕组模块，陈主要使用了 python 的 pycairo 库，提供了包括槽电势星型图、绕组链接图等等全流程的绕组分析。
