@@ -120,7 +120,7 @@ warning: HTTPS connections may not be secure. See https://aka.ms/gcmcore-tlsveri
 解决：
 
 ```shell
-git config --global http.sslVerify true
+git config --global http.sslVerify false
 ```
 
 
