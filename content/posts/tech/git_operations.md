@@ -2,7 +2,7 @@
 title: "Git_operations"
 date: 2023-05-07T14:56:23+08:00
 lastmod: 2023-05-07T14:56:23+08:00
-author: ["Linxu"]
+author: ["Bennett"]
 keywords: 
 - 
 categories: # 没有分类界面可以不填写

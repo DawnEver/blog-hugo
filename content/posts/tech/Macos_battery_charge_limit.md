@@ -2,7 +2,7 @@
 title: "Macos_battery_charge_limit"
 date: 2023-03-10T23:12:03+08:00
 lastmod: 2023-03-10T23:12:03+08:00
-author: ["Linxu"]
+author: ["Bennett"]
 keywords: 
 - 
 categories: # 没有分类界面可以不填写
